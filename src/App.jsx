@@ -1,8 +1,15 @@
 import { useState } from "react";
+import MainLayout from "./components/layouts/MainLayout";
 
 function App() {
-
-  return <h1 class="text-3xl font-bold underline text-amber-300">Hello world!</h1>;
+   return (
+     <MainLayout>
+        <div className="mx-auto max-w-6xl">
+          {/* store header */}
+          {/* products list */}
+        </div>
+     </MainLayout>
+   )
 }
 
 export default App;

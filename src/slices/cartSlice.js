@@ -52,7 +52,7 @@ const cartSlice = createSlice({
     //get all products count and total amounts
     // reduce() needs initial value for calculation : cartTotal = {totalAmount: 0,totalQuantity: 0} as second reduce argument
 
-    getTotal: (state) => {
+    getTotals: (state) => {
       const { totalAmount, totalQuantity } = state.cartItems.reduce(
         (cartSummary, cartItem) => {
           const { price, cartQty } = cartItem;

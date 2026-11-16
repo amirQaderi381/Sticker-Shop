@@ -10,13 +10,13 @@
   font-display: swap;
 }
 
-html *{
-  font-family: tanha, tahoma !important;
+html {
+    font-family: tanha, tahoma;
 }
 
 body {
-  margin: 0 !important;
-  padding: 0 !important;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
