@@ -1,1 +1,18 @@
 @import "tailwindcss";
+
+/* Custom Colors */
+@theme {
+    /* Colors */
+    --color-palette-lighter: #F5F3FF;
+    --color-palette-light: #DDD6FE;
+    --color-palette-primary: #5B21B6;
+    --color-palette-dark: #4C1D95;
+
+    /* Custom Spacing & Sizing */
+    --spacing-80: 20rem;
+    --spacing-112: 28rem;
+    --spacing-120: 30rem;
+
+    /* Font Family */
+    --font-primary: "tanha";
+}
