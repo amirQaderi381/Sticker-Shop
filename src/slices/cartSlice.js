@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 const initialState = {
   cartItems: JSON.parse(localStorage.getItem("cartItems")) ?? [], // cartItesm : [{id , name , cartQty , cartAmount}]
   cartTotalQty: 0,
-  totalCartAmount: 0,
+  cartTotalAmount: 0,
 };
 
 const cartSlice = createSlice({
@@ -31,7 +31,7 @@ const cartSlice = createSlice({
         (item) => item.id === action.payload.id,
       );
 
-      if (existingIndex > 0) {
+      if (existingIndex !== -1) {
         state.cartItems[existingIndex] = {
           ...state.cartItems[existingIndex],
           cartQty: state.cartItems[existingIndex].cartQty + 1,
@@ -47,6 +47,33 @@ const cartSlice = createSlice({
       }
 
       localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+    },
+    decreaseCart: (state, action) => {
+      const existingIndex = state.cartItems.findIndex(
+        (cartItem) => cartItem.id === action.payload.id,
+      );
+
+      if (state.cartItems[existingIndex].cartQty > 1) {
+        state.cartItems[existingIndex].cartQty -= 1;
+        toast.info("تعداد کاهش یافت", { position: "bottom-left" });
+      } else if (state.cartItems[existingIndex].cartQty == 1) {
+        state.cartItems = state.cartItems.filter(
+          (cartItem) => cartItem.id !== action.payload.id,
+        );
+        toast.info("محصول از سبد خرید حذف شد", { position: "bottom-left" });
+      }
+      localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+    },
+    removeFromCart: (state, action) => {
+      state.cartItems = state.cartItems.filter(
+        (item) => item.id !== action.payload.id,
+      );
+
+      localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+
+      toast.error("محصول از سبد خرید حذف شد", {
+        position: "bottom-left",
+      });
     },
 
     //get all products count and total amounts
@@ -74,5 +101,6 @@ const cartSlice = createSlice({
   },
 });
 
-export const { addToCart, getTotals } = cartSlice.actions;
+export const { addToCart, getTotals, decreaseCart, removeFromCart } =
+  cartSlice.actions;
 export default cartSlice.reducer;

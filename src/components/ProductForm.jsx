@@ -16,7 +16,7 @@ const ProductForm = ({ product }) => {
 
   const handleAddToCart = (item) => {
     dispatch(addToCart(item));
-    // navigate("/cart");
+    navigate("/cart");
   };
 
   const updateQty = (e) => {
