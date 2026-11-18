@@ -10,6 +10,7 @@ import MainLayout from "./components/layouts/MainLayout.jsx";
 import { ToastContainer } from "react-toastify";
 import ProductDetails from "./components/ProductDetails.jsx";
 import "react-toastify/dist/ReactToastify.css";
+import CartTable from "./components/CartTable.jsx";
 
 const router = createBrowserRouter([
   {
@@ -25,10 +26,10 @@ const router = createBrowserRouter([
       </MainLayout>
     ),
   },
-  // {
-  //   path : "cart",
-  //   element : (<MainLayout><CartTable/></MainLayout>)
-  // }
+  {
+    path : "cart",
+    element : (<MainLayout><CartTable/></MainLayout>)
+  }
 ]);
 
 createRoot(document.getElementById("root")).render(
