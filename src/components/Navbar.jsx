@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
 import CustomNumeralNumericFormat from "./Price";
 import { useSelector } from "react-redux";
-
+import { selectAll } from "../slices/cartSlice";
 
 const Navbar = () => {
-
- const {cartItems} = useSelector(state => state.cart);
+  const cart = useSelector(selectAll);
 
   return (
     <header className="border-b border-palette-lighter sticky top-0 z-20 bg-white">
@@ -23,10 +22,10 @@ const Navbar = () => {
               className="fa fa-cart-arrow-down text-palette-primary m-auto"
               style={{ fontSize: "30px" }}
             ></i>
-            {cartItems.length === 0 ? null : (
+            {cart.length === 0 ? null : (
               <div className="absolute top-0 right-0 text-xs bg-yellow-300 text-gray-900 font-semibold rounded-full py-1 px-2 transform translate-x-5 -translate-y-5">
                 <CustomNumeralNumericFormat
-                  value={cartItems.length}
+                  value={cart.length}
                   thousandSeparator=","
                 />
               </div>
