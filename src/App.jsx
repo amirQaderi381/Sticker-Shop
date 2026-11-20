@@ -1,17 +1,22 @@
-import { useState } from "react";
 import MainLayout from "./components/layouts/MainLayout";
 import Header from "./components/Header";
-import ProductListing from "./components/ProuctListing";
+import { useSelector } from "react-redux";
+import PaginateItems from "./components/common/PaginateItems";
 
-function App() {
-   return (
-     <MainLayout>
-        <div className="mx-auto max-w-6xl">
-          <Header/>
-         <ProductListing/>
-        </div>
-     </MainLayout>
-   )
-}
+const App = () => {
+  const { items: products, status } = useSelector((state) => state.products);
+  return (
+    <MainLayout>
+      <div className="mx-auto max-w-6xl">
+        <Header />
+        <PaginateItems
+          productsPerPage={6}
+          products={products}
+          status={status}
+        />
+      </div>
+    </MainLayout>
+  );
+};
 
 export default App;

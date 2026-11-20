@@ -2,16 +2,16 @@ import { useSelector } from "react-redux";
 import { useGetAllProductsQuery } from "../slices/productsApi";
 import ProductCard from "./ProductCard";
 
-const ProductListing = () => {
+const ProductListing = ({currentProducts , status}) => {
 
-    const {status} = useSelector(state => state.products);
-    const { data: products, isLoading, error } = useGetAllProductsQuery();
+    // const {status} = useSelector(state => state.products);
+    //const { data: products, isLoading, error } = useGetAllProductsQuery();
 
     return (
         <div className="py-12 max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-8">
             {status === "success" ? (
                 <>
-                    {products?.map((product, index) => (
+                    {currentProducts?.map((product, index) => (
                         <ProductCard key={index} product={product} />
                     ))}
                 </>
