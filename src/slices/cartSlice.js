@@ -31,7 +31,7 @@ const cartSlice = createSlice({
         (item) => item.id === action.payload.id,
       );
 
-      if (existingIndex !== -1) {
+      if (existingIndex >= 0) {
         state.cartItems[existingIndex] = {
           ...state.cartItems[existingIndex],
           cartQty: state.cartItems[existingIndex].cartQty + 1,
@@ -60,7 +60,7 @@ const cartSlice = createSlice({
         state.cartItems = state.cartItems.filter(
           (cartItem) => cartItem.id !== action.payload.id,
         );
-        toast.info("محصول از سبد خرید حذف شد", { position: "bottom-left" });
+        toast.error("محصول از سبد خرید حذف شد", { position: "bottom-left" });
       }
       localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
     },
