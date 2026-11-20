@@ -3,7 +3,13 @@ import ProductListing from "../ProuctListing";
 import ReactPaginateModule from "react-paginate";
 const ReactPaginate = ReactPaginateModule.default || ReactPaginateModule;
 
-const PaginateItems = ({ productsPerPage, products, status }) => {
+const PaginateItems = ({
+  productsPerPage,
+  products,
+  isLoading,
+  isSuccess,
+  isError,
+}) => {
   const [itemOffset, setItemOffset] = useState(0);
 
   const endOffset = itemOffset + productsPerPage;
@@ -22,7 +28,7 @@ const PaginateItems = ({ productsPerPage, products, status }) => {
 
   return (
     <>
-      <ProductListing currentProducts={currentProducts} status={status} />
+      <ProductListing currentProducts={currentProducts} isLoading={isLoading} isSuccess={isSuccess} />
       <ReactPaginate
         containerClassName="flex justify-center items-center gap-2 mt-8 mb-4"
         pageClassName="border border-gray-300 w-10 h-10 text-gray-700 hover:bg-palette-light"

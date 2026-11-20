@@ -2,10 +2,11 @@ import { useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import CustomNumeralNumericFormat from "./Price";
 import ProductForm from "./ProductForm";
+import { useGeProductQuery } from "../slices/productsApi";
 
 const ProductDetails = () => {
-  const {productID} = useParams();
-  const product = useSelector(state => state.products.items.find(product => product.id === productID));
+  const { productID } = useParams();
+  const { data: product } = useGeProductQuery(productID);
 
   return (
     <div className="flex flex-col align-middle justify-center items-center md:flex-row md:items-start space-y-8 md:space-y-0 md:space-x-4 lg:space-x-8 max-w-6xl w-11/12 mx-auto">

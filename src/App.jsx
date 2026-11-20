@@ -2,9 +2,10 @@ import MainLayout from "./components/layouts/MainLayout";
 import Header from "./components/Header";
 import { useSelector } from "react-redux";
 import PaginateItems from "./components/common/PaginateItems";
+import { useGetProductsQuery } from "./slices/productsApi";
 
 const App = () => {
-  const { items: products, status } = useSelector((state) => state.products);
+  const {data : products = [] , isLoading , isSuccess , isError} = useGetProductsQuery();
   return (
     <MainLayout>
       <div className="mx-auto max-w-6xl">
@@ -12,7 +13,9 @@ const App = () => {
         <PaginateItems
           productsPerPage={6}
           products={products}
-          status={status}
+          isLoading={isLoading}
+          isSuccess={isSuccess}
+          isError={isError}
         />
       </div>
     </MainLayout>

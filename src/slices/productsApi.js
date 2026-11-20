@@ -4,10 +4,13 @@ export const productsApi = createApi({
   reducerPath: "productsApi",
   baseQuery: fetchBaseQuery({baseUrl: "http://127.0.0.1:9000/"}),
   endpoints : builder => ({
-    getAllProducts  : builder.query({
+    getProducts  : builder.query({
         query : () => "stickers"
+    }),
+    geProduct : builder.query({
+      query : (productID) => `stickers/${productID}`
     })
   })
 });
 
-export const {useGetAllProductsQuery} = productsApi;
+export const {useGetProductsQuery , useGeProductQuery} = productsApi;

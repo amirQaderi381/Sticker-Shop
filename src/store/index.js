@@ -12,6 +12,7 @@ export const store = configureStore({
     middleware : getDefaultMiddleware => getDefaultMiddleware().concat(productsApi.middleware)
 });
 
-store.dispatch(fetchProducts());
+//store.dispatch(fetchProducts());
+store.dispatch(productsApi.endpoints.getProducts.initiate());
 store.dispatch(populateCart());
 store.dispatch(getTotals());
